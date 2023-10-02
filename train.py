@@ -11,7 +11,7 @@ from sklearn.svm import SVC
 
 
 # Set path to inputs
-PROCESSED_DATA_DIR = os.environ["PROCESSED_DATA_DIR"]
+PROCESSED_DATA_DIR = "./processed_data"
 train_data_file = 'train.csv'
 train_data_path = os.path.join(PROCESSED_DATA_DIR, train_data_file)
 
@@ -39,7 +39,7 @@ train_metadata = {
 
 
 # Set path to output (model)
-MODEL_DIR = os.environ["MODEL_DIR"]
+MODEL_DIR = "./model"
 model_name = 'logit_model.joblib'
 model_path = os.path.join(MODEL_DIR, model_name)
 
@@ -48,7 +48,7 @@ dump(logit_model, model_path)
 
 
 # Set path to output (metadata)
-RESULTS_DIR = os.environ["RESULTS_DIR"]
+RESULTS_DIR = "./results"
 train_results_file = 'train_metadata.json'
 results_path = os.path.join(RESULTS_DIR, train_results_file)
 
