@@ -43,8 +43,10 @@ MODEL_DIR = "./model"
 model_name = 'logit_model.joblib'
 model_path = os.path.join(MODEL_DIR, model_name)
 
+#dump(logit_model, model_path)
+
 # Serialize and save model
-dump(logit_model, model_path)
+pickle.dump(logit_model, model_path)
 
 
 # Set path to output (metadata)

@@ -1,28 +1,15 @@
-# FROM jupyter/scipy-notebook
-FROM nvidia/cuda:12.2.0-base-ubuntu20.04
-
-RUN set -xe \
-    && apt-get update -y \
-    && apt-get install -y python3-pip
+FROM python:3.11
 
 RUN pip install joblib
 RUN pip install pandas
 RUN pip install -U scikit-learn scipy matplotlib
+RUN pip install flask
 
-USER root
-RUN apt-get update && apt-get install -y jq
+RUN mkdir model
 
-RUN mkdir model raw_data processed_data results
+COPY ./api/main.py ./main.py
+COPY ./model/logit_model.joblib ./model/logit_model.joblib
 
+EXPOSE 5000
 
-ENV RAW_DATA_DIR=/raw_data
-ENV PROCESSED_DATA_DIR=/processed_data
-ENV MODEL_DIR=/model
-ENV RESULTS_DIR=/results
-ENV RAW_DATA_FILE=heart.csv
-
-
-COPY heart.csv ./raw_data/heart.csv
-COPY preprocessing.py ./preprocessing.py
-COPY train.py ./train.py
-COPY test.py ./test.py
+CMD ["python3", "main.py"]
