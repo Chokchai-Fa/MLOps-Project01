@@ -32,7 +32,7 @@ jobs:
     #     pip install -U scikit-learn scipy matplotlib
 
     - name: Preprocessing Data
-      run: python preprocressing.py
+      run: python preprocessing.py
 
     - name: Train Model
       run: python train.py
