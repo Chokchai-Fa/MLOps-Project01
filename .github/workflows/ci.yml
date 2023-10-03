@@ -42,6 +42,7 @@ jobs:
     - name: Test Model
       run: | 
         python test.py
+        cat ./results/test_metadata.json
         
 
     

@@ -15,7 +15,7 @@ model_path = os.path.join(MODEL_DIR, model_file)
 # Set path for the input (test data)
 PROCESSED_DATA_DIR = "./processed_data"
 test_data_file = 'test.csv'
-test_data_path = os.path.join('PROCESSED_DATA_DIR', test_data_file)
+test_data_path = os.path.join(PROCESSED_DATA_DIR, test_data_file)
 
 
 
