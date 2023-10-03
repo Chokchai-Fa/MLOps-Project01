@@ -9,6 +9,7 @@ app = Flask(__name__)
 from joblib import dump, load
 
 
+
 model = load('../model/logit_model.joblib')
 columns = ['age', 'sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']
 
