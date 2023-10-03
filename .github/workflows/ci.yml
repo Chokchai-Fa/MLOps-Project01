@@ -35,12 +35,14 @@ jobs:
       run: python preprocessing.py
 
     - name: Train Model
-      run: python train.py
+      run: |
+        python train.py
+        cat ./results/train_metadata.json
 
     - name: Test Model
       run: | 
         python test.py
-        cat ./results/train_metadata.json
+        
 
     
     # - name: Build the Docker image
