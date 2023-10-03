@@ -1,0 +1,44 @@
+name: ci-mlops
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Set up python environment
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: Install Dependencies
+      run: |
+        pip install flask
+        pip install pandas
+        pip install joblib
+        pip install -U scikit-learn scipy matplotlib
+
+    - name: Preprocessing Data
+      run: python preprocressing.py
+
+    - name: Train Model
+      run: python train.py
+
+    - name: Test Model
+      run: | 
+        python test.py
+        cat ./results/train_metadata.json
+
+    
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
